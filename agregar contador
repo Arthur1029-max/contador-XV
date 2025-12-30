@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cuenta regresiva XV</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .contador {
+      display: flex;
+      gap: 20px;
+      text-align: center;
+    }
+    .contador div {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 12px;
+      min-width: 90px;
+    }
+    .contador span {
+      font-size: 2.5rem;
+      font-weight: bold;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="contador">
+  <div><span id="dias">0</span><small>Días</small></div>
+  <div><span id="horas">0</span><small>Horas</small></div>
+  <div><span id="minutos">0</span><small>Min</small></div>
+  <div><span id="segundos">0</span><small>Seg</small></div>
+</div>
+
+<script>
+  const fechaEvento = new Date("2026-02-07T00:00:00").getTime();
+
+  setInterval(() => {
+    const ahora = new Date().getTime();
+    const diferencia = fechaEvento - ahora;
+
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+    document.getElementById("dias").textContent = dias;
+    document.getElementById("horas").textContent = horas;
+    document.getElementById("minutos").textContent = minutos;
+    document.getElementById("segundos").textContent = segundos;
+  }, 1000);
+</script>
+
+</body>
+</html>
