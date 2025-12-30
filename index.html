@@ -3,61 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <title>Cuenta regresiva XV</title>
+
   <style>
     body {
-      background: black;
+      background: linear-gradient(135deg, #1a001f, #3b004a);
       color: white;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
+      text-align: center;
     }
+
+    .contenedor {
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      color: #e6b3ff;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.3rem;
+      margin: 5px 0;
+    }
+
+    .fecha {
+      margin-bottom: 30px;
+      font-style: italic;
+      color: #f5d9ff;
+    }
+
     .contador {
       display: flex;
       gap: 20px;
-      text-align: center;
+      justify-content: center;
+      flex-wrap: wrap;
     }
+
     .contador div {
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.15);
       padding: 20px;
-      border-radius: 12px;
+      border-radius: 15px;
       min-width: 90px;
     }
+
     .contador span {
       font-size: 2.5rem;
       font-weight: bold;
       display: block;
+      color: #ffffff;
+    }
+
+    small {
+      font-size: 0.9rem;
+      color: #f2c6ff;
     }
   </style>
 </head>
+
 <body>
 
-<div class="contador">
-  <div><span id="dias">0</span><small>Días</small></div>
-  <div><span id="horas">0</span><small>Horas</small></div>
-  <div><span id="minutos">0</span><small>Min</small></div>
-  <div><span id="segundos">0</span><small>Seg</small></div>
-</div>
+  <div class="contenedor">
+    <h1>El sueño está por comenzar ✨</h1>
+    <p>Mis XV años</p>
+    <p class="fecha">7 de febrero de 2026</p>
 
-<script>
-  const fechaEvento = new Date("2026-02-07T00:00:00").getTime();
+    <div class="contador">
+      <div>
+        <span id="dias">0</span>
+        <small>Días</small>
+      </div>
+      <div>
+        <span id="horas">0</span>
+        <small>Horas</small>
+      </div>
+      <div>
+        <span id="minutos">0</span>
+        <small>Minutos</small>
+      </div>
+      <div>
+        <span id="segundos">0</span>
+        <small>Segundos</small>
+      </div>
+    </div>
+  </div>
 
-  setInterval(() => {
-    const ahora = new Date().getTime();
-    const diferencia = fechaEvento - ahora;
+  <script>
+    const fechaEvento = new Date("2026-02-07T00:00:00").getTime();
 
-    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+    setInterval(() => {
+      const ahora = new Date().getTime();
+      const diferencia = fechaEvento - ahora;
 
-    document.getElementById("dias").textContent = dias;
-    document.getElementById("horas").textContent = horas;
-    document.getElementById("minutos").textContent = minutos;
-    document.getElementById("segundos").textContent = segundos;
-  }, 1000);
-</script>
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+      document.getElementById("dias").textContent = dias;
+      document.getElementById("horas").textContent = horas;
+      document.getElementById("minutos").textContent = minutos;
+      document.getElementById("segundos").textContent = segundos;
+    }, 1000);
+  </script>
 
 </body>
 </html>
